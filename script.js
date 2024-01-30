@@ -5,7 +5,7 @@ let drawing = false;
 
 // Función para cargar el modelo
 async function loadModel() {
-    model = await tf.loadLayersModel('https://raw.githubusercontent.com/IthanMendez/ArtificialIntelligence/main/model.json');
+    model = await tf.loadLayersModel('https://drive.google.com/uc?export=download&id=1ya-3jfAdTKTHKBUW0cUXCDHcPVZxscsK');
     console.log("Modelo cargado.");
 }
 
@@ -35,8 +35,8 @@ function draw(event) {
 function preprocessCanvas(image) {
     let tensor = tf.browser.fromPixels(image)
         .resizeNearestNeighbor([28, 28])
-        .mean(2)
-        .expandDims(2)
+        .mean(20)
+        .expandDims(20)
         .expandDims()
         .toFloat();
     return tensor.div(255.0);
