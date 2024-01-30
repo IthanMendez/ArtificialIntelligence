@@ -5,7 +5,7 @@ let drawing = false;
 
 // Función para cargar el modelo
 async function loadModel() {
-    model = await tf.loadLayersModel('https://drive.google.com/uc?export=download&id=1ya-3jfAdTKTHKBUW0cUXCDHcPVZxscsK');
+    model = await tf.loadLayersModel('https://raw.githubusercontent.com/IthanMendez/ArtificialIntelligence/main/model.json');
     console.log("Modelo cargado.");
 }
 
