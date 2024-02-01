@@ -34,7 +34,7 @@ function draw(event) {
 
 function preprocessCanvas(image) {
     let tensor = tf.browser.fromPixels(image)
-        .resizeNearestNeighbor([28, 28])
+        .resizeNearestNeighbor([280, 280])
         .mean(2)
         .expandDims(2)
         .expandDims()
