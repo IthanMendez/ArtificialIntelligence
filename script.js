@@ -54,7 +54,7 @@ function predict() {
 
 
 function displayResult(results) {
-    const maxIndex = results.indexOf(Math.max(...results));
+    const maxIndex = tf.argMax(results).dataSync();  // Utiliza tf.argMax para obtener el índice del máximo
     document.getElementById('prediction').innerText = maxIndex;
 }
 
