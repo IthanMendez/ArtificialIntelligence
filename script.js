@@ -34,21 +34,24 @@ function draw(event) {
 
 function preprocessCanvas(image) {
     let tensor = tf.browser.fromPixels(image)
-        .resizeNearestNeighbor([280, 280])
+        .resizeNearestNeighbor([28, 28])
         .mean(2)
         .expandDims(2)
         .expandDims()
         .toFloat();
     return tensor.div(255.0);
 }
-
 function predict() {
-    let tensor = preprocessCanvas(canvas);
-    model.predict(tensor).data().then(prediction => {
-        let results = Array.from(prediction);
-        displayResult(results);
+    tf.tidy(() => {
+        let tensor = preprocessCanvas(canvas);
+        console.log(tensor);  // Añade esta línea
+        model.predict(tensor).data().then(prediction => {
+            let results = Array.from(prediction);
+            displayResult(results);
+    });
     });
 }
+
 
 function displayResult(results) {
     const maxIndex = results.indexOf(Math.max(...results));
